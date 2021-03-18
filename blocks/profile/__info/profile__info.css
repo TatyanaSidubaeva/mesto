@@ -3,7 +3,8 @@
   min-height: 73px;
   display: grid;
   grid-template-columns: 1fr 24px;
-  grid-gap: 16px 18px;}
+  grid-gap: 16px 18px;
+}
 
 @media screen and (max-width: 767px) {
   .profile__info {
@@ -12,4 +13,5 @@
     grid-gap: 14px 10px;
     margin-bottom: 36px;
     text-align: center;
+  }
 }

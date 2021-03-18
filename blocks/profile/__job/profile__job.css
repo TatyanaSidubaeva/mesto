@@ -1,4 +1,4 @@
-.profile__vocation {
+.profile__job {
   color: #ffffff;
   font-size: 18px;
   line-height: 22px;
@@ -8,8 +8,9 @@
 }
 
 @media screen and (max-width: 767px) {
-  .profile__vocation {
+  .profile__job {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
+  }
 }
