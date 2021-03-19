@@ -1,40 +1,29 @@
-const popupEditButton = document.querySelector('.profile__edit-button');
+let popupEditButton = document.querySelector('.profile__edit-button');
+let profileName = document.querySelector('.profile__name');
+let profileJob = document.querySelector('.profile__job');
 let popup = document.querySelector('.popup');
-const popupCloseButton = popup.querySelector('.popup__close-button');
-const popupSaveButton = popup.querySelector('.popup__save-button');
+let popupCloseButton = popup.querySelector('.popup__close-button');
 let formElement = popup.querySelector('.popup__form');
+let nameInput = formElement.querySelector('.popup__input_name');
+let jobInput = formElement.querySelector('.popup__input_job');
 
-function popupToggle() {
-  console.log('button clicked');
+function togglePopup() {
   popup.classList.toggle('popup_opened');
 }
 
-popupEditButton.addEventListener('click', popupToggle);
-popupCloseButton.addEventListener('click', popupToggle);
-popupSaveButton.addEventListener('click', popupToggle);
-
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-function formSubmitHandler (evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  
-  // Находим поля формы в DOM
-  let nameInput = formElement.querySelector('.popup__name');
-  let jobInput = formElement.querySelector('.popup__job');
-
-  // Выводим значение полей из свойства value
-  console.log(nameInput.value);
-  console.log(jobInput.value);
-
-  // Выбираем элементы, куда должны быть вставлены значения полей
-  let profileName  = document.querySelector('.profile__name');
-  let profileJob  = document.querySelector('.profile__job');
-
-  // Вставлем новые значения с помощью textContent
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+function openPopup() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+  togglePopup();
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler);
+function submitFormHandler (evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  togglePopup();
+}
+
+popupEditButton.addEventListener('click', openPopup);
+popupCloseButton.addEventListener('click', togglePopup);
+formElement.addEventListener('submit', submitFormHandler);
