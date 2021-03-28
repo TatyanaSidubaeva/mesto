@@ -71,7 +71,7 @@
   <footer class="footer">
     <p class="footer__copyright">© 2021. Tatyana Sidubaeva</p>
   </footer>
-  <div class="popup" id="edit-profile">
+  <div class="popup popup_type_edit-profile" id="edit-profile">
     <div class="popup__overlay"></div>
     <div class="popup__content">
       <button type="button" class="popup__close-button"></button>
@@ -83,7 +83,7 @@
       </form>
     </div>
   </div>
-  <div class="popup" id="add-card">
+  <div class="popup popup_type_add-card" id="add-card">
     <div class="popup__overlay"></div>
     <div class="popup__content">
       <button type="button" class="popup__close-button"></button>
@@ -94,6 +94,13 @@
         <button type="submit" class="popup__button">Создать</button>
       </form>
     </div>
+  </div>
+  <div class="popup popup_type_view-card" id="view-card">
+    <button type="button" class="popup__close-button"></button>
+    <figure class="popup__view-card">
+      <img class="popup__image">
+      <figcaption class="popup__image-caption"></figcaption>
+    </figure>
   </div>
   <script src="./scripts/script.js"></script>
 </body>
