@@ -12,6 +12,7 @@
   outline: 0;
   padding: 0;
   cursor: pointer;
+  transition: opacity 0.2s linear;
 }
 .card__delete-button:hover {
   opacity: 0.6;
