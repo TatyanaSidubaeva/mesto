@@ -1,3 +1,5 @@
 .card__image {
   max-height: 282px;
+  min-width: 282px;
+  cursor: pointer;
 }
