@@ -1,5 +1,5 @@
 ﻿function openModal(modal) {
-    modal.classList.add('popup_opened');
+  modal.classList.add('popup_opened');
 }
 
 function closeModal(modal) {
