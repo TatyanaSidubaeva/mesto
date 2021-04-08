@@ -19,6 +19,7 @@ function submitAddCardFormHandler (evt) {
   const inputLinkCardValue = linkInput.value;
   createCard(inputTitleCardValue, inputLinkCardValue, 1);
   closeModal(addCardModal);
+  addCardModal.querySelector('.popup__form').reset();
 }
 
 function openViewCard (e) {
@@ -66,7 +67,11 @@ addCardModal.addEventListener('submit', submitAddCardFormHandler);
 
 closeAddCardModalButton.addEventListener('click', () => closeModal(addCardModal));
 
+addCardOverlay.addEventListener('click', () => closeModal(addCardModal));
+
 closeViewCardModalButton.addEventListener('click', () => closeModal(viewCardModal));
+
+viewCardOverlay.addEventListener('click', () => closeModal(viewCardModal));
 
 openEditProfileModalButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
@@ -75,5 +80,6 @@ openEditProfileModalButton.addEventListener('click', () => {
 })
 
 closeEditProfileModalButton.addEventListener('click', () => closeModal(editProfileModal));
+editProfileOverlay.addEventListener('click', () => closeModal(editProfileModal));
 
 editProfileModal.addEventListener('submit', submitEditProfileFormHandler);

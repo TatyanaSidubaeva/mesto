@@ -29,6 +29,10 @@ const editProfileModal = document.querySelector('.popup_type_edit-profile');
 const addCardModal = document.querySelector('.popup_type_add-card');
 const viewCardModal = document.querySelector('.popup_type_view-card');
 
+const editProfileOverlay = editProfileModal.querySelector('.popup__overlay');
+const addCardOverlay = addCardModal.querySelector('.popup__overlay');
+const viewCardOverlay = viewCardModal.querySelector('.popup__overlay');
+
 const openEditProfileModalButton = document.querySelector('.profile__edit-button');
 const openAddCardModalButton = document.querySelector('.profile__add-button');
 
