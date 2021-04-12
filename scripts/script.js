@@ -1,5 +1,12 @@
-﻿function openModal(modal) {
+﻿function keyHandler(evt) {
+  if (evt.key === 'Escape') {
+    closeModal(document.querySelector('.popup_opened'));
+  }
+}
+
+function openModal(modal) {
   modal.classList.add('popup_opened');
+  document.addEventListener('keydown', keyHandler);
 }
 
 function closeModal(modal) {
