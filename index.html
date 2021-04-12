@@ -35,9 +35,11 @@
     <div class="popup__content">
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="editprofileform">
-        <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Жак-Ив Кусто">
-        <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="Исследователь океана">
+      <form class="popup__form" name="editprofileform" novalidate>
+        <input class="popup__input popup__input_type_name" type="text" name="name" id="name" placeholder="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+        <span class="popup__input-error" id="name-error"></span>
+        <input class="popup__input popup__input_type_job" type="text" name="job" id="job" placeholder="Исследователь океана" minlength="2" maxlength="200" required>
+        <span class="popup__input-error" id="job-error"></span>
         <button type="submit" class="popup__save-button">Сохранить</button>
       </form>
     </div>
@@ -47,9 +49,11 @@
     <div class="popup__content">
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="addcardform">
-        <input class="popup__input popup__input_type_title" type="text" name="title" placeholder="Название">
-        <input class="popup__input popup__input_type_link" type="text" name="link" placeholder="Ссылка на картинку">
+      <form class="popup__form" name="addcardform" novalidate>
+        <input class="popup__input popup__input_type_title" type="text" name="title" id="title" placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="popup__input-error" id="title-error"></span>
+        <input class="popup__input popup__input_type_link" type="url" name="link" id="link" placeholder="Ссылка на картинку" required>
+        <span class="popup__input-error" id="link-error"></span>
         <button type="submit" class="popup__save-button">Создать</button>
       </form>
     </div>
@@ -76,5 +80,6 @@
   </template>  
   <script src="./scripts/constants.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>

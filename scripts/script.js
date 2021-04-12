@@ -80,6 +80,7 @@ openEditProfileModalButton.addEventListener('click', () => {
 })
 
 closeEditProfileModalButton.addEventListener('click', () => closeModal(editProfileModal));
+
 editProfileOverlay.addEventListener('click', () => closeModal(editProfileModal));
 
 editProfileModal.addEventListener('submit', submitEditProfileFormHandler);
