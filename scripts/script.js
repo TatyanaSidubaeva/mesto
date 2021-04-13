@@ -11,6 +11,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove('popup_opened');
+  document.removeEventListener('keydown', keyHandler);
 }
 
 function submitEditProfileFormHandler (evt) {
