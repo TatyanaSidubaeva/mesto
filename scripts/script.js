@@ -19,9 +19,14 @@
   linkInput,
   cardTemplate,
   cardsContainer,
+  formEditProfile,
+  formAddCard,
+  enableValidationParametrs
 } from "./constants.js";
 
 import Card from "./Card.js";
+
+import FormValidator from "./FormValidator.js";
 
 function keyHandler(evt) {
   if (evt.key === 'Escape') {
@@ -124,3 +129,9 @@ closeEditProfileModalButton.addEventListener('click', () => closeModal(editProfi
 editProfileOverlay.addEventListener('click', () => closeModal(editProfileModal));
 
 editProfileModal.addEventListener('submit', submitEditProfileFormHandler);
+
+const formEditProfileValidator = new FormValidator(formEditProfile, enableValidationParametrs);
+formEditProfileValidator.enableValidation();
+
+const formAddCardValidator = new FormValidator(formAddCard, enableValidationParametrs);
+formAddCardValidator.enableValidation();

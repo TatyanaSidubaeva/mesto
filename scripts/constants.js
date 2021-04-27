@@ -51,3 +51,14 @@ export const linkInput = addCardModal.querySelector('.popup__input_type_link');
 
 export const cardTemplate = document.querySelector('#card').content;
 export const cardsContainer = document.querySelector('.cards__list');
+
+export const formEditProfile = editProfileModal.querySelector('.popup__form');
+export const formAddCard = addCardModal.querySelector('.popup__form');
+
+export const enableValidationParametrs = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
