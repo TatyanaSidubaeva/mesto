@@ -1,5 +1,5 @@
 import { viewCardModal, closeViewCardModalButton } from "./constants.js";
-import { closeModal, openModal } from "./script.js";
+import { closeModal, openModal } from "./index.js";
 
 class Card {
   constructor(data, cardSelector) {
