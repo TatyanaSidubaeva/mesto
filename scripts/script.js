@@ -1,15 +1,40 @@
-﻿function keyHandler(evt) {
+﻿import {
+  initialCards,
+  editProfileModal,
+  addCardModal,
+  viewCardModal,
+  editProfileOverlay,
+  addCardOverlay,
+  viewCardOverlay,
+  openEditProfileModalButton,
+  openAddCardModalButton,
+  closeEditProfileModalButton,
+  closeAddCardModalButton,
+  closeViewCardModalButton,
+  profileName,
+  profileJob,
+  nameInput,
+  jobInput,
+  titleInput,
+  linkInput,
+  cardTemplate,
+  cardsContainer,
+} from "./constants.js";
+
+import Card from "./Card.js";
+
+function keyHandler(evt) {
   if (evt.key === 'Escape') {
     closeModal(document.querySelector('.popup_opened'));
   }
 }
 
-function openModal(modal) {
+export function openModal(modal) {
   modal.classList.add('popup_opened');
   document.addEventListener('keydown', keyHandler);
 }
 
-function closeModal(modal) {
+export function closeModal(modal) {
   modal.classList.remove('popup_opened');
   document.removeEventListener('keydown', keyHandler);
 }
@@ -23,14 +48,18 @@ function submitEditProfileFormHandler (evt) {
 
 function submitAddCardFormHandler (evt) {
   evt.preventDefault();
-  const inputTitleCardValue = titleInput.value;
-  const inputLinkCardValue = linkInput.value;
-  createCard(inputTitleCardValue, inputLinkCardValue, 1);
+  const cardData = {
+    name: titleInput.value,
+    link: linkInput.value,
+  };
+  const card = new Card(cardData, '#card');
+  cardsContainer.prepend(card.createCard());
   closeModal(addCardModal);
   addCardModal.querySelector('.popup__form').reset();
 }
 
-function openViewCard (e) {
+/*перенесено в класс Card
+  function openViewCard (e) {
   const viewCardPopup = viewCardModal.querySelector('.popup__view-card');
   const imagePopup = viewCardPopup.querySelector('.popup__image');
   const captionPopup = viewCardPopup.querySelector('.popup__image-caption');
@@ -65,9 +94,12 @@ function createCard(name, link, first) {
   imageCard.addEventListener('click', openViewCard);
   deleteButton.addEventListener('click', removeCard);
   likeButton.addEventListener('click', likeCard);
-}
+}*/
 
-initialCards.forEach(card => createCard(card.name, card.link));
+initialCards.forEach((item) => {
+  const card = new Card(item, '#card');
+  cardsContainer.append(card.createCard());
+});
 
 openAddCardModalButton.addEventListener('click', () => openModal(addCardModal));
 
@@ -77,7 +109,7 @@ closeAddCardModalButton.addEventListener('click', () => closeModal(addCardModal)
 
 addCardOverlay.addEventListener('click', () => closeModal(addCardModal));
 
-closeViewCardModalButton.addEventListener('click', () => closeModal(viewCardModal));
+// перенесено в класс Card closeViewCardModalButton.addEventListener('click', () => closeModal(viewCardModal));
 
 viewCardOverlay.addEventListener('click', () => closeModal(viewCardModal));
 

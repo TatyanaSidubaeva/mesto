@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,29 +25,29 @@ const initialCards = [
   }
 ];
 
-const editProfileModal = document.querySelector('.popup_type_edit-profile');
-const addCardModal = document.querySelector('.popup_type_add-card');
-const viewCardModal = document.querySelector('.popup_type_view-card');
+export const editProfileModal = document.querySelector('.popup_type_edit-profile');
+export const addCardModal = document.querySelector('.popup_type_add-card');
+export const viewCardModal = document.querySelector('.popup_type_view-card');
 
-const editProfileOverlay = editProfileModal.querySelector('.popup__overlay');
-const addCardOverlay = addCardModal.querySelector('.popup__overlay');
-const viewCardOverlay = viewCardModal.querySelector('.popup__overlay');
+export const editProfileOverlay = editProfileModal.querySelector('.popup__overlay');
+export const addCardOverlay = addCardModal.querySelector('.popup__overlay');
+export const viewCardOverlay = viewCardModal.querySelector('.popup__overlay');
 
-const openEditProfileModalButton = document.querySelector('.profile__edit-button');
-const openAddCardModalButton = document.querySelector('.profile__add-button');
+export const openEditProfileModalButton = document.querySelector('.profile__edit-button');
+export const openAddCardModalButton = document.querySelector('.profile__add-button');
 
-const closeEditProfileModalButton = editProfileModal.querySelector('.popup__close-button');
-const closeAddCardModalButton = addCardModal.querySelector('.popup__close-button');
-const closeViewCardModalButton = viewCardModal.querySelector('.popup__close-button');
+export const closeEditProfileModalButton = editProfileModal.querySelector('.popup__close-button');
+export const closeAddCardModalButton = addCardModal.querySelector('.popup__close-button');
+export const closeViewCardModalButton = viewCardModal.querySelector('.popup__close-button');
 
-const profileName = document.querySelector('.profile__name');
-const profileJob = document.querySelector('.profile__job');
+export const profileName = document.querySelector('.profile__name');
+export const profileJob = document.querySelector('.profile__job');
 
-const nameInput = editProfileModal.querySelector('.popup__input_type_name');
-const jobInput = editProfileModal.querySelector('.popup__input_type_job');
+export const nameInput = editProfileModal.querySelector('.popup__input_type_name');
+export const jobInput = editProfileModal.querySelector('.popup__input_type_job');
 
-const titleInput = addCardModal.querySelector('.popup__input_type_title');
-const linkInput = addCardModal.querySelector('.popup__input_type_link');
+export const titleInput = addCardModal.querySelector('.popup__input_type_title');
+export const linkInput = addCardModal.querySelector('.popup__input_type_link');
 
-const cardTemplate = document.querySelector('#card').content;
-const cardsContainer = document.querySelector('.cards__list');
+export const cardTemplate = document.querySelector('#card').content;
+export const cardsContainer = document.querySelector('.cards__list');
