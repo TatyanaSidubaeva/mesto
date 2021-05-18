@@ -21,14 +21,74 @@
   cardsContainer,
   formEditProfile,
   formAddCard,
-  enableValidationParametrs
+  enableValidationParametrs,
+  popupProfileSelector,
+  popupCardSelector,
+  popupPreviewSelector,
+  profileSelector,
+  cardContainerSelector
 } from "./constants.js";
 
 import Card from "./Card.js";
 
 import FormValidator from "./FormValidator.js";
 
-function keyHandler(evt) {
+import Section from "./Section.js";
+
+import UserInfo from "./UserInfo.js";
+
+import PopupWithImage from "./PopupWithImage.js";
+
+import PopupWithForm from "./PopupWithForm.js";
+
+function createCard(cardData) {
+  const card = new Card(cardData, '#card', () => {
+    popupPreview.open(cardData);
+  });
+  return card.createCard();
+}
+
+const userData = new UserInfo(profileSelector);
+
+const defaultCards = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      defaultCards.addItem(createCard(item));
+    },
+  },
+  cardContainerSelector
+);
+
+const popupPreview = new PopupWithImage(popupPreviewSelector);
+
+const popupCard = new PopupWithForm(popupCardSelector, () => {
+  const cardData = popupCard._getInputValues();
+  defaultCards.addItem(createCard(cardData));
+  popupCard.close();
+});
+
+const popupProfile = new PopupWithForm(popupProfileSelector, () => {
+  userData.setUserInfo(popupProfile._getInputValues());
+  popupProfile.close();
+});
+
+defaultCards.renderItems();
+
+openEditProfileModalButton.addEventListener('click', () => {
+  nameInput.value = userData.getUserInfo().name;
+  jobInput.value = userData.getUserInfo().job;
+  popupProfile.open();
+});
+
+openAddCardModalButton.addEventListener('click', function () {
+  popupCard.open();
+});
+
+popupProfile.setEventListeners();
+popupCard.setEventListeners();
+popupPreview.setEventListeners();
+/*function keyHandler(evt) {
   if (evt.key === 'Escape') {
     closeModal(document.querySelector('.popup_opened'));
   }
@@ -88,7 +148,7 @@ closeEditProfileModalButton.addEventListener('click', () => closeModal(editProfi
 
 editProfileOverlay.addEventListener('click', () => closeModal(editProfileModal));
 
-editProfileModal.addEventListener('submit', submitEditProfileFormHandler);
+editProfileModal.addEventListener('submit', submitEditProfileFormHandler);*/
 
 const formEditProfileValidator = new FormValidator(formEditProfile, enableValidationParametrs);
 formEditProfileValidator.enableValidation();

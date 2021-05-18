@@ -1,11 +1,14 @@
-import { viewCardModal, closeViewCardModalButton } from "./constants.js";
-import { closeModal, openModal } from "./index.js";
+/*## Преобразуйте класс `Card`
+Свяжите класс `Card` c попапом. Сделайте так, чтобы Card принимал в конструктор функцию `handleCardClick`. Эта функция должна открывать попап с картинкой при клике на карточку.*/
+/*import { viewCardModal, closeViewCardModalButton } from "./constants.js";
+import { closeModal, openModal } from "./index.js";*/
 
-class Card {
-  constructor(data, cardSelector) {
-    this._title = data.name;
-    this._link = data.link;
+export default class Card {
+  constructor({title, link}, cardSelector, handleCardClick) {
+    this._title = title;
+    this._link = link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -21,12 +24,12 @@ class Card {
   _setEventListeners() {
     this._element
       .querySelector('.card__image').addEventListener('click', () => {
-        this._openViewCard();
-      });
+        this._handleCardClick();
+      }); 
       
-    closeViewCardModalButton.addEventListener('click', () => {
+    /*closeViewCardModalButton.addEventListener('click', () => {
       closeModal(viewCardModal)
-    });
+    });*/
 
     this._element
       .querySelector('.card__delete-button').addEventListener('click', () => {
@@ -39,7 +42,7 @@ class Card {
       });
   }
 
-  _openViewCard() {
+  /*_openViewCard() {
     const viewCardPopup = viewCardModal.querySelector('.popup__view-card');
     const imagePopup = viewCardPopup.querySelector('.popup__image');
     const captionPopup = viewCardPopup.querySelector('.popup__image-caption');
@@ -47,17 +50,17 @@ class Card {
     imagePopup.alt = this._title;
     captionPopup.textContent = this._title;
     openModal(viewCardModal);
-  }
+  }*/
 
   _removeCard() {
     this._element.remove();
   }
-  
+
   _likeCard() {
     this._element
       .querySelector('.card__like-button').classList.toggle('card__like-button_active');
   }
-  
+
   createCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
@@ -68,5 +71,3 @@ class Card {
     return this._element;
   }
 }
-
-export default Card;
