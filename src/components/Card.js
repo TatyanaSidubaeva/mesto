@@ -1,8 +1,3 @@
-/*## Преобразуйте класс `Card`
-Свяжите класс `Card` c попапом. Сделайте так, чтобы Card принимал в конструктор функцию `handleCardClick`. Эта функция должна открывать попап с картинкой при клике на карточку.*/
-/*import { viewCardModal, closeViewCardModalButton } from "./constants.js";
-import { closeModal, openModal } from "./index.js";*/
-
 export default class Card {
   constructor({title, link}, cardSelector, handleCardClick) {
     this._title = title;
@@ -26,10 +21,6 @@ export default class Card {
       .querySelector('.card__image').addEventListener('click', () => {
         this._handleCardClick();
       }); 
-      
-    /*closeViewCardModalButton.addEventListener('click', () => {
-      closeModal(viewCardModal)
-    });*/
 
     this._element
       .querySelector('.card__delete-button').addEventListener('click', () => {
@@ -41,16 +32,6 @@ export default class Card {
         this._likeCard();
       });
   }
-
-  /*_openViewCard() {
-    const viewCardPopup = viewCardModal.querySelector('.popup__view-card');
-    const imagePopup = viewCardPopup.querySelector('.popup__image');
-    const captionPopup = viewCardPopup.querySelector('.popup__image-caption');
-    imagePopup.src = this._link;
-    imagePopup.alt = this._title;
-    captionPopup.textContent = this._title;
-    openModal(viewCardModal);
-  }*/
 
   _removeCard() {
     this._element.remove();
