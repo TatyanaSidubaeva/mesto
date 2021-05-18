@@ -1,4 +1,6 @@
-﻿import {
+﻿import "./index.css";
+
+import {
   initialCards,
   openEditProfileModalButton,
   openAddCardModalButton,
