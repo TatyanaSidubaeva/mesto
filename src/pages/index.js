@@ -53,12 +53,14 @@ const popupCard = new PopupWithForm(popupCardSelector, {
   submitHandler: (data) => {
     const cardData = { title: data.title, link: data.link };
     defaultCards.addItem(createCard(cardData));
+    popupCard.close();
   }
 });
 
 const popupProfile = new PopupWithForm(popupProfileSelector, {
   submitHandler: (data) => {
     userData.setUserInfo({ name: data.name, job: data.job });
+    popupProfile.close();
   }
 });
 
