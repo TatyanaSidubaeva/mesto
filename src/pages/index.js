@@ -49,15 +49,17 @@ const defaultCards = new Section(
 
 const popupPreview = new PopupWithImage(popupPreviewSelector);
 
-const popupCard = new PopupWithForm(popupCardSelector, () => {
-  const cardData = popupCard._getInputValues();
-  defaultCards.addItem(createCard(cardData));
-  popupCard.close();
+const popupCard = new PopupWithForm(popupCardSelector, {
+  submitHandler: (data) => {
+    const cardData = { title: data.title, link: data.link };
+    defaultCards.addItem(createCard(cardData));
+  }
 });
 
-const popupProfile = new PopupWithForm(popupProfileSelector, () => {
-  userData.setUserInfo(popupProfile._getInputValues());
-  popupProfile.close();
+const popupProfile = new PopupWithForm(popupProfileSelector, {
+  submitHandler: (data) => {
+    userData.setUserInfo({ name: data.name, job: data.job });
+  }
 });
 
 defaultCards.renderItems();
