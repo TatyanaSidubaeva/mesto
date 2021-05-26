@@ -124,7 +124,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, {
       .then(result => {
         userInfo.setUserInfo(result);
         renderLoadingData(formEditProfile, 'Сохранить');
-        popupCard.close()
+        popupProfile.close()
       })
       .catch(err => console.log('Ошибка редактирования профиля'))
   }
