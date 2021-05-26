@@ -15,7 +15,6 @@ export default class PopupApplyDelete extends Popup {
     this._formList.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleSubmitCallback();
-      this.close();
     });
   }
 }

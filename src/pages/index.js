@@ -40,7 +40,10 @@ function createCard(item) {
       popupApplyDelete.open();
       popupApplyDelete.setSubmitAction(() => {
         api.deleteCard(card.getId())
-          .then(() => card.removeCard())
+          .then(() => {
+            card.removeCard();
+            popupApplyDelete.close()
+          })
           .catch(err => console.log('Ошибка удаления карточки'))
       })
     },
@@ -93,7 +96,8 @@ const popupChangeAvatar = new PopupWithForm((popupEditAvatarSelector), {
     api.setUserAvatar(data)
       .then(result => {
         userInfo.setUserInfo(result);
-        renderLoadingData(formChangeAvatar, 'Сохранить')
+        renderLoadingData(formChangeAvatar, 'Сохранить');
+        popupChangeAvatar.close()
       })
       .catch(err => console.log('Ошибка изменения аватара'))
   }
@@ -106,7 +110,8 @@ const popupCard = new PopupWithForm(popupCardSelector, {
       .then(result => {
         const cardElement = createCard(result);
         defaultCards.addItem(cardElement, true);
-        renderLoadingData(formAddCard, 'Создать')
+        renderLoadingData(formAddCard, 'Создать');
+        popupCard.close()
       })
       .catch(err => console.log('Ошибка создания карточки'))
   }
@@ -118,15 +123,17 @@ const popupProfile = new PopupWithForm(popupProfileSelector, {
     api.setUserInfo(data)
       .then(result => {
         userInfo.setUserInfo(result);
-        renderLoadingData(formEditProfile, 'Сохранить')
+        renderLoadingData(formEditProfile, 'Сохранить');
+        popupCard.close()
       })
       .catch(err => console.log('Ошибка редактирования профиля'))
   }
 });
 
 openEditProfileModalButton.addEventListener('click', () => {
-  nameInput.value = userInfo.getUserInfo().name;
-  jobInput.value = userInfo.getUserInfo().info;
+  const userData =userInfo.getUserInfo();
+  nameInput.value = userData.name;
+  jobInput.value = userData.info;
   popupProfile.open();
 });
 
